@@ -48,14 +48,10 @@ def index():
     if form.validate_on_submit():
         if 'bruteForcer' in request.form:
             pass
-            return jsonify({
-            "ERROR": "no forcer found, please send a name."
-            })
+            
         elif 'checker' in request.form:
             pass
-            return jsonify({
-            "ERROR": "no checker found, please send a name."
-            })
+            
             return render_template('index.html')
 
 if __name__ == '__main__':
