@@ -43,9 +43,19 @@ def post_something():
         })
 
 # A welcome message to test our server
-@app.route('/')
+@app.route('/', methods=['POST'])
 def index():
-    return render_template('index.html')
+    print(request.method)
+    if request.method = 'POST':
+        if request.form.get('Forcer') == 'BruteForcer':
+            #pass
+            print("Forcer selected")
+        elif request.form.get('Checker') == 'Checker':
+            #pass do something else
+            print("Checker Selected")
+        else:
+            #pass unknown
+            return render_template('index.html')
 
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
