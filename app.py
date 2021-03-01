@@ -43,18 +43,19 @@ def post_something():
         })
 
 # A welcome message to test our server
-@app.route('/')#, methods=['POST'])
+@app.route('/', methods=['POST'])
 def index():
-    #print(request.method)
-    #if request.method = 'POST':
-        #if request.form.get('bruteForcer') == 'forcer':
-            #pass
-            #print("Forcer selected")
-        #elif request.form.get('checker') == 'checker':
-            #pass do something else
-            #print("Checker Selected")
-        #else:
-            #pass unknown
+    if form.validate_on_submit():
+        if 'bruteForcer' in request.form:
+            pass
+            return jsonify({
+            "ERROR": "no forcer found, please send a name."
+            })
+        elif 'checker' in request.form:
+            pass
+            return jsonify({
+            "ERROR": "no checker found, please send a name."
+            })
             return render_template('index.html')
 
 if __name__ == '__main__':
