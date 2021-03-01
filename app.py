@@ -5,7 +5,7 @@ app = Flask(__name__)
     
 @app.route('/success/<passWord>')
 def success(passWord):
-   return 'welcome %s' % passWord
+   return 'the password you entered was %s' % passWord
     
 @app.route('/checker', methods = ['POST', 'GET'])
 def checker():
