@@ -42,7 +42,12 @@ def post_something():
             "ERROR": "no name found, please send a name."
         })
 
-@app.route('/button')
+@app.route('/bruteforcer')
+def button():
+    print("Hello World")
+    return "Hello World"
+
+@app.route('/checker')
 def button():
     print("Hello World")
     return "Hello World"
