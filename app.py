@@ -3,7 +3,7 @@ import os
 from flask import Flask, request, jsonify, render_template, url_for, redirect
 app = Flask(__name__)
     
-@app.route('/success/<pass>')
+@app.route('/success/<passWord>')
 def success(passWord):
    return 'welcome %s' % passWord
     
