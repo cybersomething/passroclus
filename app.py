@@ -42,15 +42,20 @@ def post_something():
             "ERROR": "no name found, please send a name."
         })
 
+@app.route('/button')
+def button():
+    print("Hello World")
+    return "Hello World"
+    
 # A welcome message to test our server
 @app.route('/')#, methods=['POST'])
 def index():
-    if form.validate_on_submit():
-        if 'bruteForcer' in request.form:
-            pass
-            
-        elif 'checker' in request.form:
-            pass
+    #if form.validate_on_submit():
+       # if 'bruteForcer' in request.form:
+       #     pass
+       #     
+       ## elif 'checker' in request.form:
+        #    pass
             
             return render_template('index.html')
 
