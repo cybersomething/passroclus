@@ -10,10 +10,10 @@ def success(passWord):
 @app.route('/checker', methods = ['POST', 'GET'])
 def checker():
     if request.method == 'POST':
-        password = request.form['pass']
+        password = request.form['password']
         return redirect (url_for('success',passWord = password))
     else:
-        password = request.args.get('pass')
+        password = request.args.get('password')
         return redirect(url_for('success',passWord = password))
     
 # A welcome message to test our server
