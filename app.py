@@ -43,7 +43,7 @@ def post_something():
         })
 
 # A welcome message to test our server
-@app.route('/', methods=['POST'])
+@app.route('/')#, methods=['POST'])
 def index():
     if form.validate_on_submit():
         if 'bruteForcer' in request.form:
