@@ -43,17 +43,17 @@ def post_something():
         })
 
 # A welcome message to test our server
-@app.route('/', methods=['POST'])
+@app.route('/')#, methods=['POST'])
 def index():
-    print(request.method)
-    if request.method = 'POST':
-        if request.form.get('bruteForcer') == 'forcer':
+    #print(request.method)
+    #if request.method = 'POST':
+        #if request.form.get('bruteForcer') == 'forcer':
             #pass
-            print("Forcer selected")
-        elif request.form.get('checker') == 'checker':
+            #print("Forcer selected")
+        #elif request.form.get('checker') == 'checker':
             #pass do something else
-            print("Checker Selected")
-        else:
+            #print("Checker Selected")
+        #else:
             #pass unknown
             return render_template('index.html')
 
