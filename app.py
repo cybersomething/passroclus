@@ -43,12 +43,12 @@ def post_something():
         })
 
 @app.route('/bruteforcer')
-def button():
+def bruteforcer():
     print("Hello World")
     return "Hello World"
 
 @app.route('/checker')
-def button():
+def checker():
     print("Hello World")
     return "Hello World"
     
