@@ -41,16 +41,21 @@ def post_something():
         return jsonify({
             "ERROR": "no name found, please send a name."
         })
+    
+@app.route('/success/<pass>')
+def success(passWord):
+   return 'welcome %s' % passWord
 
-@app.route('/bruteforcer')
-def bruteforcer():
-    print("This is the page for the brute forcer")
-    return "This is the page for the brute forcer"
-
-@app.route('/checker')
+    
+    
+@app.route('/checker', methods = ['POST', 'GET'])
 def checker():
-    print("This is the page for the Checker")
-    return "This is the page for the Checker"
+    if request.method == 'POST':
+        password = request.form['pass']
+        return redirect (url_for('success',passWord = password))
+    else:
+        password = request.args.get('pass')
+        return redirect(url_for('success',passWord = password))
     
 # A welcome message to test our server
 @app.route('/')#, methods=['POST'])
