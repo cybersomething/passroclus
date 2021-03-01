@@ -47,10 +47,10 @@ def post_something():
 def index():
     print(request.method)
     if request.method = 'POST':
-        if request.form.get('Forcer') == 'BruteForcer':
+        if request.form.get('bruteForcer') == 'forcer':
             #pass
             print("Forcer selected")
-        elif request.form.get('Checker') == 'Checker':
+        elif request.form.get('checker') == 'checker':
             #pass do something else
             print("Checker Selected")
         else:
