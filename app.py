@@ -44,13 +44,13 @@ def post_something():
 
 @app.route('/bruteforcer')
 def bruteforcer():
-    print("Hello World")
-    return "Hello World"
+    print("This is the page for the brute forcer")
+    return "This is the page for the brute forcer"
 
 @app.route('/checker')
 def checker():
-    print("Hello World")
-    return "Hello World"
+    print("This is the page for the Checker")
+    return "This is the page for the Checker"
     
 # A welcome message to test our server
 @app.route('/')#, methods=['POST'])
