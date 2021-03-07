@@ -5,7 +5,10 @@ app = Flask(__name__)
     
 @app.route('/success/<passWord>')
 def success(passWord):
-   return 'the password you entered was %s' % passWord
+   return """
+   <h1>The password you entered was</h1> + passWord
+   """
+
 
 @app.route('/creatorHome')
 def creatorHome():
