@@ -8,8 +8,8 @@ def success(passWord):
    message = ('The password you entered was ' + passWord)
    return render_template ('success.html', message = message)
 
-
 @app.route('/securityCheckerRedirect', methods = ['POST', 'GET'])
+def securityCheckerRedirect():
    if request.method == 'POST':
       return redirect (url_for('securityChecker'))
 
@@ -18,6 +18,7 @@ def creatorHome():
    return render_template ('securityChecker.html')
    
 @app.route('/breachCheckerRedirect', methods = ['POST', 'GET'])
+def breachCheckerRedirect():
    if request.method == 'POST':
       return redirect (url_for('breachChecker'))
 
