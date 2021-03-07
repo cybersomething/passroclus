@@ -14,7 +14,7 @@ def securityCheckerRedirect():
       return redirect (url_for('securityChecker'))
 
 @app.route('/securityChecker')
-def creatorHome():
+def securityChecker():
    return render_template ('securityChecker.html')
    
 @app.route('/breachCheckerRedirect', methods = ['POST', 'GET'])
@@ -23,7 +23,7 @@ def breachCheckerRedirect():
       return redirect (url_for('breachChecker'))
 
 @app.route('/breachChecker')
-def creatorHome():
+def breachChecker():
    return render_template ('breachChecker.html')
     
 @app.route('/checker', methods = ['POST', 'GET'])
