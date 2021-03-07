@@ -2,10 +2,13 @@
 import os
 from flask import Flask, request, jsonify, render_template, url_for, redirect, flash
 app = Flask(__name__)
+
+
     
 @app.route('/success/<passWord>')
 def success(passWord):
-   return '<h1>The password you entered was</h1>' % passWord
+   successMessage = 'The password you entered was' + passWord
+   return render_template (success.html, successMessage)
 
 
 
