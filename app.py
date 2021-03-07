@@ -7,9 +7,7 @@ app = Flask(__name__)
 def success(passWord):
    flash('The password you entered was' + passWord)
    return render_template ('success.html')
-   message = ('<h2>The password you entered was </h2>' + passWord)
-   return render_template ('success.html', message = message)
-
+  
 @app.route('/creatorHome')
 def creatorHome():
    return '"Let us create you a more secure password!"'
