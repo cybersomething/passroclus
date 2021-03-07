@@ -1,36 +1,32 @@
 # app.py
 import os
 from flask import Flask, request, jsonify, render_template, url_for, redirect, flash
-from flask import Flask, request, jsonify, render_template, url_for, redirect, flash, session
 app = Flask(__name__)
 
 @app.route('/success/<passWord>')
 def success(passWord):
-   message = ('The password you entered was ' + passWord)
-   return render_template ('success.html', message = message)
+   flash('The password you entered was' + passWord)
    return render_template ('success.html')
+   message = ('<h2>The password you entered was </h2>' + passWord)
+   return render_template ('success.html', message = message)
 
 @app.route('/creatorHome')
 def creatorHome():
-@@ -20,12 +19,22 @@ def checker():
+   return '"Let us create you a more secure password!"'
+    
+@app.route('/checker', methods = ['POST', 'GET'])
+def checker():
+    if request.method == 'POST':
+        password = request.form['password']
+        return redirect (url_for('success',passWord = password))
     else:
         password = request.args.get('password')
         return redirect (url_for('success',passWord = password))
-
-      if 'password' in session:
-         session['password'] = session.get('password')
-      else:
-         session['password'] = password
-
+    
 @app.route('/creator', methods = ['POST', 'GET'])
 def creator():
     if request.method == 'POST':
         return redirect(url_for('creatorHome'))
-
-@app.route('/deletePassword')
-def deletePassword():
-   session.pop('password', None)
-   return render_template('deleted.html')
     
 # A welcome message to test our server
 @app.route('/')#, methods=['POST'])
