@@ -1,12 +1,11 @@
 # app.py
 import os
-from flask import Flask, request, jsonify, render_template, url_for, redirect, flash
+from flask import Flask, request, jsonify, render_template, url_for, redirect, flash, session
 app = Flask(__name__)
 
 @app.route('/success/<passWord>')
 def success(passWord):
-   message = ('The password you entered was ' + passWord)
-   return render_template ('success.html', message = message)
+   return render_template ('success.html')
 
 @app.route('/creatorHome')
 def creatorHome():
@@ -20,12 +19,22 @@ def checker():
     else:
         password = request.args.get('password')
         return redirect (url_for('success',passWord = password))
+   
+      if 'password' in session:
+         session['password'] = session.get('password')
+      else:
+         session['password'] = password
     
 @app.route('/creator', methods = ['POST', 'GET'])
 def creator():
     if request.method == 'POST':
         return redirect(url_for('creatorHome'))
     
+@app.route('/deletePassword')
+def deletePassword():
+   session.pop('password', None)
+   return render_template('deleted.html')
+
 # A welcome message to test our server
 @app.route('/')#, methods=['POST'])
 def index():
