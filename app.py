@@ -3,9 +3,9 @@ import os
 from flask import Flask, request, jsonify, render_template, url_for, redirect, flash
 app = Flask(__name__)
     
-@app.route('/success/<passWord>')
-def success(passWord):
-   flash('the password you entered was %s' % passWord)
+@app.route('/success')
+def success():
+   flash('Password stored successfully)
    return render_template('success.html')
 
 
@@ -17,10 +17,10 @@ def creatorHome():
 def checker():
     if request.method == 'POST':
         password = request.form['password']
-        return redirect (url_for('success',passWord = password))
+        return redirect (url_for('success'))
     else:
         password = request.args.get('password')
-        return redirect(url_for('success',passWord = password))
+        return redirect(url_for('success'))
     
 @app.route('/creator', methods = ['POST', 'GET'])
 def creator():
