@@ -6,6 +6,7 @@ app = Flask(__name__)
 @app.route('/success/<passWord>')
 def success(passWord):
    return 'the password you entered was %s' % passWord
+   return render_template('success.html')
 
 
 @app.route('/creatorHome')
@@ -20,7 +21,6 @@ def checker():
     else:
         password = request.args.get('password')
         return redirect(url_for('success',passWord = password))
-    return render_template('success.html')
     
 @app.route('/creator', methods = ['POST', 'GET'])
 def creator():
