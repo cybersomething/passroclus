@@ -7,21 +7,21 @@ app = Flask(__name__)
 def success(passWord):
    return render_template ('success.html')
 
-#@app.route('/securityCheckerRedirect', methods = ['POST', 'GET'])
- #  if request.method == 'POST':
-#      security = request.form['security']
- #     return redirect (url_for('securityChecker'))
- #  else
- #     security = request.args.get('security')
- #     return redirect (url_for('securityChecker'))
+@app.route('/securityCheckerRedirect', methods = ['POST', 'GET'])
+   if request.method == 'POST':
+      security = request.form['security']
+      return redirect (url_for('securityChecker'))
+   else
+      security = request.args.get('security')
+      return redirect (url_for('securityChecker'))
    
-#@app.route('/breachCheckerRedirect', methods = ['POST', 'GET'])
-#   if request.method == 'POST':
-#      breach = request.form['breach']
-#      return redirect (url_for('breachChecker'))
-#   else
- #     security = request.args.get('breach')
-#      return redirect (url_for('breachChecker'))
+@app.route('/breachCheckerRedirect', methods = ['POST', 'GET'])
+   if request.method == 'POST':
+      breach = request.form['breach']
+      return redirect (url_for('breachChecker'))
+   else
+      security = request.args.get('breach')
+      return redirect (url_for('breachChecker'))
       
 @app.route('/creatorHome')
 def creatorHome():
