@@ -5,8 +5,7 @@ app = Flask(__name__)
 
 @app.route('/success/<passWord>')
 def success(passWord):
-   flash('The password you entered was' + passWord)
-   return render_template ('success.html', message=message)
+   return render_template ('success.html')
   
 @app.route('/creatorHome')
 def creatorHome():
