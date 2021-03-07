@@ -6,6 +6,10 @@ app = Flask(__name__)
 @app.route('/success/<passWord>')
 def success(passWord):
    return 'the password you entered was %s' % passWord
+
+@app.route('/creatorHome')
+def creatorHome():
+   return '"Let us create you a more secure password!"'
     
 @app.route('/checker', methods = ['POST', 'GET'])
 def checker():
@@ -15,6 +19,11 @@ def checker():
     else:
         password = request.args.get('password')
         return redirect(url_for('success',passWord = password))
+    
+@app.route('/creator', methods = ['POST', 'GET'])
+def creator():
+    if request.method == 'POST':
+        return redirect(url_for('creatorHome'))
     
 # A welcome message to test our server
 @app.route('/')#, methods=['POST'])
