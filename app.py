@@ -3,12 +3,10 @@ import os
 from flask import Flask, request, jsonify, render_template, url_for, redirect, flash
 app = Flask(__name__)
 
-
-    
 @app.route('/success/<passWord>')
 def success(passWord):
-   flash('The password you entered was' + passWord)
-   return render_template ('success.html')
+   message = ('<h2>The password you entered was </h2>' + passWord)
+   return render_template ('success.html', message = message)
 
 @app.route('/creatorHome')
 def creatorHome():
