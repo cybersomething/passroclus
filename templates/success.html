@@ -11,14 +11,20 @@
       h2 {color: white;}
     </style>
     <body>
-     {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        {% for message in messages %}
-          {{ message }}
-        {% endfor %}
-      {% endif %}
-     {% endwith %}
-      <h2> Successful Login </h2>
+      <div class="container-fluid" align="center">
+      <h2>To begin, would you like to check the overall security of your password or if it has been breached?</h2>
+        <br>
+        <br>
+        <form action ="/securityChecker" method = "post">
+        <input type="submit" class="btn btn-primary btn-lg" value="Security Checker">
+        </form>
+        <br>
+        <br>
+        <form action ="/breachChecker" method = "post">
+        <input type="submit" class="btn btn-primary btn-lg" value="Breach Checker">
+        </form>
+        
+      </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </body>
 </html>
