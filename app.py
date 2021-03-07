@@ -9,7 +9,7 @@ def success(passWord):
   
 @app.route('/creatorHome')
 def creatorHome():
-   return '"Let us create you a more secure password!"'
+   return render_template ('creator.html')
     
 @app.route('/checker', methods = ['POST', 'GET'])
 def checker():
