@@ -5,7 +5,9 @@ app = Flask(__name__)
 
 @app.route('/success/<passWord>')
 def success(passWord):
-   return render_template ('success.html')
+   message = ('The password you entered was ' + passWord)
+   return render_template ('success.html', message = message)
+
 
 @app.route('/securityCheckerRedirect', methods = ['POST', 'GET'])
    if request.method == 'POST':
