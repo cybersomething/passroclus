@@ -6,10 +6,34 @@ app = Flask(__name__)
 @app.route('/success/<passWord>')
 def success(passWord):
    return render_template ('success.html')
-  
+
+@app.route('/securityCheckerRedirect', methods = ['POST', 'GET'])
+   if request.method == 'POST':
+      security = request.form['security']
+      return redirect (url_for('securityChecker'))
+   else
+      security = request.args.get('security')
+      return redirect (url_for('securityChecker'))
+   
+@app.route('/breachCheckerRedirect', methods = ['POST', 'GET'])
+   if request.method == 'POST':
+      breach = request.form['breach']
+      return redirect (url_for('breachChecker'))
+   else
+      security = request.args.get('breach')
+      return redirect (url_for('breachChecker'))
+      
 @app.route('/creatorHome')
 def creatorHome():
    return render_template ('creator.html')
+
+@app.route('/securityChecker')
+def creatorHome():
+   return render_template ('securityChecker.html')
+
+@app.route('/breachChecker')
+def creatorHome():
+   return render_template ('breachChecker.html')
     
 @app.route('/checker', methods = ['POST', 'GET'])
 def checker():
