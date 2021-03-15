@@ -29,8 +29,8 @@ def breachCheckerRedirect():
 def breachChecker():
    subprocess.call(["g++", "/breachChecker/BreachChecker/Source.cpp"]) 
    tmp=subprocess.call("./a.out") 
-   print "printing result" 
-   print tmp 
+   print ("printing result")
+   print (tmp)
    return render_template ('breachChecker.html')
     
 @app.route('/checker', methods = ['POST', 'GET'])
