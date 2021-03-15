@@ -3,6 +3,7 @@ Some adaptions have been made */
 
 // Code for loading files sourced from Adam Sampson's string searching lab exercise in CMP201.
 
+#include <boost/python.hpp> //Adding library for python integration.
 #include <chrono>
 #include <iostream>
 #include <algorithm>
@@ -15,6 +16,7 @@ Some adaptions have been made */
 #define measure_num 1
 
 using std::chrono::duration_cast;
+using namespace boost::python;
 using std::chrono::milliseconds;
 using std::cout;
 using std::endl;
@@ -26,6 +28,8 @@ typedef std::chrono::steady_clock the_clock;
 
 bool breach = false; // Breach variable for return value
 
+BOOST_PYTHON_MODULE(hello_ext)
+{
 // Preprocessing for strong good suffix rule 
 void ss_preprocess(int* shift, int* border_pos,
 	char* pat)
@@ -165,4 +169,5 @@ int main()
 	}
 
 	return 0;
+}
 }
