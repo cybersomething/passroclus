@@ -3,6 +3,7 @@
 #Most current working version as of 07/03/2021, 23:07
 import os
 import subprocess
+import sourcepy import Source
 from flask import Flask, request, jsonify, render_template, url_for, redirect, flash
 app = Flask(__name__)
 
@@ -27,10 +28,12 @@ def breachCheckerRedirect():
 
 @app.route('/breachChecker')
 def breachChecker():
-   subprocess.call(["g++", "./breachChecker/BreachChecker/Source.cpp"]) 
-   tmp=subprocess.call("./a.out") 
-   print ("printing result")
-   print (tmp)
+   return '''<!doctype html>
+   <label for="pat"Enter Your Password Below</label>
+  <p><input type="password" class="form-control form-control-lg" name="pat" placeholder="Enter your password here" required/></p>
+       </div>
+       <p><input type="submit" class="btn btn-primary btn-lg" value="Check Password" /></p>
+       </form>'''
    return render_template ('breachChecker.html')
     
 @app.route('/checker', methods = ['POST', 'GET'])
