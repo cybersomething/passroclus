@@ -24,12 +24,12 @@ def securityCheckerRedirect():
 def securityChecker():
    return render_template ('securityChecker.html')
    
-@app.route('/breachCheckerRedirect', methods = ['POST', 'GET'])
-def breachCheckerRedirect():
+@app.route('/breachCheckerRedirect/<passWord>', methods = ['POST', 'GET'])
+def breachCheckerRedirect(passWord):
    if request.method == 'POST':
-      return redirect (url_for('breachChecker'))
+      return redirect (url_for('breachChecker/<passWord>'))
 
-@app.route('/breachChecker')
+@app.route('/breachChecker/<passWord>')
 def breachChecker(passWord):
    SHA1 = hashlib.sha1(passWord.encode('utf-8'))
    hash_string = SHA1.hexdigest().upper()
