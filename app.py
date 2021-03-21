@@ -72,8 +72,6 @@ def breachChecker(passWord):
    else:
       print("No password supplied\n")
       parser.print_help()
-      
-   return render_template ('breachChecker.html')
     
 @app.route('/checker', methods = ['POST', 'GET'])
 def checker():
