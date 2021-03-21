@@ -79,10 +79,10 @@ def breachChecker(passWord):
 def checker():
     if request.method == 'POST':
         password = request.form['password']
-        return redirect (url_for('success',passWord = password))
+        return redirect (url_for('breachChecker',passWord = password))
     else:
         password = request.args.get('password')
-        return redirect (url_for('success',passWord = password))
+        return redirect (url_for('breachChecker',passWord = password))
     
 @app.route('/creator', methods = ['POST', 'GET'])
 def creator():
