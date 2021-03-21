@@ -3,7 +3,6 @@
 #Most current working version as of 07/03/2021, 23:07
 import os
 import subprocess
-import sourcepy import Source
 import hashlib
 import requests
 import argparse
