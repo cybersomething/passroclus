@@ -3,10 +3,7 @@
 #Most current working version as of 07/03/2021, 23:07
 import os
 import subprocess
-import hashlib
-import requests
-import argparse
-import re
+import pwnedpasswords
 import json
 from flask import Flask, request, jsonify, render_template, url_for, redirect, flash
 app = Flask(__name__)
@@ -32,51 +29,8 @@ def breachCheckerRedirect(passWord):
 
 @app.route('/breachChecker/<passWord>')
 def breachChecker(passWord):
-   SHA1 = hashlib.sha1(passWord.encode('utf-8'))
-   hash_string = SHA1.hexdigest().upper()
-   prefix = hash_string[0:5]
-
-   header = {
-      'User-Agent': 'password checker'
-   }
-
-   url = "https://api.pwnedpasswords.com/range/{}".format(prefix)
-
-   req = requests.get(url, headers=header).content.decode('utf-8')
-   # split the result twice - each line into key, value pairs of hash-postfixes and the usage count.
-   hashes = dict(t.split(":") for t in req.split('\r\n'))
-
-   # add the prefix to the key values (hashes) of the hashes dictionary
-   hashes = dict((prefix + key, value) for (key, value) in hashes.items())
-
-   for item_hash in hashes:
-       if item_hash == hash_string:
-          x = "\nOh no — pwned!"
-          y = "{} has previously appeared in a data breach, used {} times, and should never be used. ".format(passWord,hashes[hash_string])
-          passwordOutput = command1 + command2
-       break
-
-   if hash_string != item_hash:
-       x = "\nGood news — no pwnage found!"
-       y = "{} wasn't found in any of the Pwned Passwords loaded into Have I Been Pwned.".format(passWord)
-                         
-   exit()
-                         
-   parser = argparse.ArgumentParser()
-   parser.add_argument("-p", "--password", help="enter your password")
-   args = parser.parse_args()
-
-   argv = vars(args)
-   passWord = argv['password']
-
-   if args.password:
-      check_leak(passWord)
-   else:
-      print("No password supplied\n")
-      parser.print_help()
-      
-   results = [x,y]
-   return render_template('breachChecker.html', results = results)
+   passwordCheck = pwnedpasswords.check({passWord})
+   return render_template('breachChecker.html', passwordCheck = passwordCheck)
     
 @app.route('/checker', methods = ['POST', 'GET'])
 def checker():
