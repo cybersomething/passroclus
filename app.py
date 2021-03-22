@@ -57,7 +57,7 @@ def breachChecker(passWord):
        break
 
    if hash_string != item_hash:
-       print(json.dumps({\nGood news — no pwnage found!"}))
+       print(json.dumps({"\nGood news — no pwnage found!"}))
        print(json.dumps({"{} wasn't found in any of the Pwned Passwords loaded into Have I Been Pwned.".format(passWord)}))
                          
    exit()
