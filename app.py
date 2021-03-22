@@ -51,18 +51,16 @@ def breachChecker(passWord):
 
    for item_hash in hashes:
        if item_hash == hash_string:
-          print(json.dumps({"\nOh no — pwned!"}))
-          print(json.dumps({"{} has previously appeared in a data breach, used {} times, and should never be used. ".format(passWord,hashes[hash_string])}))
+          x = "\nOh no — pwned!"
+          y = "{} has previously appeared in a data breach, used {} times, and should never be used. ".format(passWord,hashes[hash_string])
           passwordOutput = command1 + command2
        break
 
    if hash_string != item_hash:
-       print(json.dumps({"\nGood news — no pwnage found!"}))
-       print(json.dumps({"{} wasn't found in any of the Pwned Passwords loaded into Have I Been Pwned.".format(passWord)}))
+       x = "\nGood news — no pwnage found!"
+       y = "{} wasn't found in any of the Pwned Passwords loaded into Have I Been Pwned.".format(passWord)
                          
    exit()
-
-   json.dumps(passwordOutput)
                          
    parser = argparse.ArgumentParser()
    parser.add_argument("-p", "--password", help="enter your password")
@@ -76,7 +74,9 @@ def breachChecker(passWord):
    else:
       print("No password supplied\n")
       parser.print_help()
-   return render_template('breachChecker.html', passwordOutput = passwordOutput)
+      
+   results = [x,y]
+   return render_template('breachChecker.html', results = results)
     
 @app.route('/checker', methods = ['POST', 'GET'])
 def checker():
