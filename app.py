@@ -7,6 +7,7 @@ import hashlib
 import requests
 import argparse
 import re
+import json
 from flask import Flask, request, jsonify, render_template, url_for, redirect, flash
 app = Flask(__name__)
 
@@ -50,17 +51,19 @@ def breachChecker(passWord):
 
    for item_hash in hashes:
        if item_hash == hash_string:
-          command1 = str("\nOh no — pwned!")
-          command2 = str("{} has previously appeared in a data breach, used {} times, and should never be used. ".format(passWord,hashes[hash_string]))
+          print(json.dumps({"\nOh no — pwned!"}))
+          print(json.dumps({"{} has previously appeared in a data breach, used {} times, and should never be used. ".format(passWord,hashes[hash_string])}))
           passwordOutput = command1 + command2
        break
 
    if hash_string != item_hash:
-       command1 = str("\nGood news — no pwnage found!")
-       command2 = str("{} wasn't found in any of the Pwned Passwords loaded into Have I Been Pwned.".format(passWord))
-       passwordOutput = command1 + command2
+       print(json.dumps({\nGood news — no pwnage found!"}))
+       print(json.dumps({"{} wasn't found in any of the Pwned Passwords loaded into Have I Been Pwned.".format(passWord)}))
+                         
    exit()
 
+   json.dumps(passwordOutput)
+                         
    parser = argparse.ArgumentParser()
    parser.add_argument("-p", "--password", help="enter your password")
    args = parser.parse_args()
