@@ -29,7 +29,7 @@ def breachCheckerRedirect(passWord):
 
 @app.route('/breachChecker/<passWord>')
 def breachChecker(passWord):
-   passwordCheck = pwnedpasswords.check({passWord})
+   passwordCheck = pwnedpasswords.check(passWord)
    return render_template('breachChecker.html', passwordCheck = passwordCheck)
     
 @app.route('/checker', methods = ['POST', 'GET'])
