@@ -50,3 +50,4 @@ def validate_password(password):
                 msg = ("Password meets all requirements and may be used.\n")
                 return msg
                 break
+return msg
