@@ -35,20 +35,18 @@ def validate_password(password):
         (long_enough, 'Password needs to be at least 8 characters in length.'),
     )
     failures = [
-        failMsg for validator, failMsg in VALIDATIONS if not validator(password)]
+        msg for validator, msg in VALIDATIONS if not validator(password)]
     if not failures:
         return True
     else:
         print("Invalid password! Review below and change your password accordingly!\n")
-        for failMsg in failures:
-            msg = "Your password is insecure \n"
-            strengthCheck = msg + failMsg
-            return strengthCheck
+        for msg in failures:
+            return msg
            
     if __name__ == '__main__':
         while True:
             password = validate_password(password)
             if validate_password(password):
-                strengthCheck = ("Password meets all requirements and may be used.\n")
-                return strengthCheck
+                msg = ("Password meets all requirements and may be used.\n")
+                return msg
                 break
