@@ -86,7 +86,7 @@ def breachChecker(passWord):
                 strengthCheck = ("Password meets all requirements and may be used.\n")
                 return strengthCheck
                 break
-      return render_template('breachChecker.html', strengthCheck = strengthCheck)
+   return render_template('breachChecker.html', strengthCheck = strengthCheck)
     
 @app.route('/checker', methods = ['POST', 'GET'])
 def checker():
