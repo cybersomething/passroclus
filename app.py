@@ -59,7 +59,7 @@ def breachChecker(passWord):
        else:
            return False
 
-   def validate_password(password):
+   def validate_password(passWord):
        VALIDATIONS = (
            (contains_upper, 'Password needs at least one upper-case character.'),
            (contains_lower, 'Password needs at least one lower-case character.'),
@@ -81,7 +81,7 @@ def breachChecker(passWord):
                    msg = ("Password meets all requirements and may be used.\n")
                    return render_template('breachChecker.html', strengthCheck = msg)
                    break
-      return 'OK'
+   return 'OK'
     
 @app.route('/checker', methods = ['POST', 'GET'])
 def checker():
