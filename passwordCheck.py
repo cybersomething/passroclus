@@ -35,7 +35,7 @@ def validate_password(password):
         (long_enough, 'Password needs to be at least 8 characters in length.'),
     )
     failures = [
-        failMsg for validator, msg in VALIDATIONS if not validator(password)
+        failMsg for validator, failMsg in VALIDATIONS if not validator(password)
     ]
     if not failures:
         return True
