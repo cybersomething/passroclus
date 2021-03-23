@@ -29,8 +29,8 @@ def breachCheckerRedirect(passWord):
 
 @app.route('/breachChecker/<passWord>')
 def breachChecker(passWord):
-   passwordCheck = passwordCheck.validate_password(passWord)
-   return render_template('breachChecker.html', passwordCheck = passwordCheck)
+   strengthCheck = passwordCheck.validate_password(passWord)
+   return render_template('breachChecker.html', strengthCheck = strengthCheck)
     
 @app.route('/checker', methods = ['POST', 'GET'])
 def checker():
