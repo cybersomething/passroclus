@@ -42,7 +42,8 @@ def validate_password(password):
     else:
         print("Invalid password! Review below and change your password accordingly!\n")
         for failMsg in failures:
-            return failMsg + msg
+            msg = "Your password is insecure"
+            return msg + failMsg
             return False
             break
 
