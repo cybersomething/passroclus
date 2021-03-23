@@ -4,6 +4,7 @@
 import os
 import subprocess
 import passwordCheck
+from string import ascii_uppercase, ascii_lowercase, digits
 import json
 from flask import Flask, request, jsonify, render_template, url_for, redirect, flash
 app = Flask(__name__)
