@@ -44,7 +44,6 @@ def validate_password(password):
         for failMsg in failures:
             msg = "Your password is insecure"
             return msg + failMsg
-            return False
             break
 
     if __name__ == '__main__':
