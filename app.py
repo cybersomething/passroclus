@@ -67,21 +67,21 @@ def breachChecker(passWord):
            (contains_special, 'Password needs at least one special character.'),
            (long_enough, 'Password needs to be at least 8 characters in length.'),
        )
-       failures = [
-           msg for validator, msg in VALIDATIONS if not validator(password)]
-       if not failures:
+       msg = [
+           failures for validator, msg in VALIDATIONS if not validator(password)]
+       if not msg:
            return True
        else:
-         return render_template('breachChecker.html', strengthCheck = failures)
+         return render_template('breachChecker.html', strengthCheck = msg)
 
        if __name__ == '__main__':
            while True:
                password = validate_password(password)
                if validate_password(password):
                    msg = ("Password meets all requirements and may be used.\n")
-                   return render_template('breachChecker.html', strengthCheck = msg)
+                   return msg
                    break
-   return 'OK'
+   return render_template('breachChecker.html', strengthCheck = msg)
     
 @app.route('/checker', methods = ['POST', 'GET'])
 def checker():
