@@ -46,11 +46,12 @@ def validate_password(password):
             return False
             break
 
-if __name__ == '__main__':
-    while True:
-        password = validate_password(password)
-        print()
-        if validate_password(password):
-            print("Password meets all requirements and may be used.\n")
-            print("Exiting program...\n")
-            break
+    if __name__ == '__main__':
+        while True:
+            password = validate_password(password)
+            print()
+            if validate_password(password):
+                print("Password meets all requirements and may be used.\n")
+                print("Exiting program...\n")
+                break
+
