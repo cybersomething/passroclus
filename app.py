@@ -34,6 +34,7 @@ def breachCheckerRedirect(passWord):
 
 @app.route('/breachChecker/<passWord>')
 def breachChecker(passWord):
+   strengthCheck;
    def contains(required_chars, s):
       return any(c in required_chars for c in s)
 
@@ -76,7 +77,7 @@ def breachChecker(passWord):
          for failMsg in failures:
             msg = "Your password is insecure \n"
             strengthCheck = msg + failMsg
-            return msg + failMsg
+            return strengthCheck
             break
            
       if __name__ == '__main__':
