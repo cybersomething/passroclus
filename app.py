@@ -34,7 +34,6 @@ def breachCheckerRedirect(passWord):
 
 @app.route('/breachChecker/<passWord>')
 def breachChecker(passWord):
-   strengthCheck;
    def contains(required_chars, s):
       return any(c in required_chars for c in s)
 
@@ -87,7 +86,7 @@ def breachChecker(passWord):
                 strengthCheck = ("Password meets all requirements and may be used.\n")
                 return strengthCheck
                 break
-   return render_template('breachChecker.html', strengthCheck = strengthCheck)
+      return render_template('breachChecker.html', strengthCheck = strengthCheck)
     
 @app.route('/checker', methods = ['POST', 'GET'])
 def checker():
