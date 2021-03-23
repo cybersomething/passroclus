@@ -3,7 +3,7 @@ from sys import exit
 from string import ascii_uppercase, ascii_lowercase, digits
 
 def contains(required_chars, s):
-    return any(c in required_chars for c in s)
+      return any(c in required_chars for c in s)
 
 def contains_upper(s):
     return contains(ascii_uppercase, s)
@@ -35,22 +35,20 @@ def validate_password(password):
         (long_enough, 'Password needs to be at least 8 characters in length.'),
     )
     failures = [
-        failMsg for validator, failMsg in VALIDATIONS if not validator(password)
-    ]
+        failMsg for validator, failMsg in VALIDATIONS if not validator(password)]
     if not failures:
         return True
     else:
         print("Invalid password! Review below and change your password accordingly!\n")
         for failMsg in failures:
-            msg = "Your password is insecure"
-            return msg + failMsg
-            break
-
+            msg = "Your password is insecure \n"
+            strengthCheck = msg + failMsg
+            return strengthCheck
+           
     if __name__ == '__main__':
         while True:
             password = validate_password(password)
             if validate_password(password):
-                msg = ("Password meets all requirements and may be used.\n")
-                return msg
+                strengthCheck = ("Password meets all requirements and may be used.\n")
+                return strengthCheck
                 break
-
