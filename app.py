@@ -3,7 +3,7 @@
 #Most current working version as of 07/03/2021, 23:07
 import os
 import subprocess
-import pwnedpasswords
+import passwordChecker
 import json
 from flask import Flask, request, jsonify, render_template, url_for, redirect, flash
 app = Flask(__name__)
@@ -29,7 +29,7 @@ def breachCheckerRedirect(passWord):
 
 @app.route('/breachChecker/<passWord>')
 def breachChecker(passWord):
-   passwordCheck = pwnedpasswords.check(passWord)
+   passwordCheck = passwordChecker.validate_password(passWord)
    return render_template('breachChecker.html', passwordCheck = passwordCheck)
     
 @app.route('/checker', methods = ['POST', 'GET'])
