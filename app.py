@@ -33,7 +33,8 @@ def breachCheckerRedirect(passWord):
 
 @app.route('/breachChecker/<passWord>')
 def breachChecker(passWord):
-   breachFile = open(ncscTop100k.txt, 'r')
+   fileName = "ncscTop100k.txt"
+   breachFile = open(fileName, 'r')
    try:
       for line in breachFile:
          if passWord in line:
