@@ -60,7 +60,7 @@ def securityChecker(passWord):
       else:
          firstMessage = ("Password meets all requirements.")
          msg = ("To make a better password check out the password creator.")
-      return render_template ('securityChecker.html', firstMessage = firstMessage, msg = msg)
+   return render_template ('securityChecker.html', firstMessage = firstMessage, msg = msg)
 
 @app.route('/breachCheckerRedirect/<passWord>', methods = ['POST', 'GET'])
 def breachCheckerRedirect(passWord):
