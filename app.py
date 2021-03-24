@@ -57,9 +57,13 @@ def securityChecker(passWord):
          firstMessage = ("Invalid password! Review below and change your password accordingly!\n")
          for msg in failures:
             msg+=str(failures)
+         return firstMessage
+         return msg
       else:
          firstMessage = ("Password meets all requirements.")
          msg = ("To make a better password check out the password creator.")
+         return firstMessage
+         return msg
    return render_template ('securityChecker.html', firstMessage = firstMessage, msg = msg)
 
 @app.route('/breachCheckerRedirect/<passWord>', methods = ['POST', 'GET'])
