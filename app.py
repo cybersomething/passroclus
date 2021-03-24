@@ -34,14 +34,21 @@ def breachCheckerRedirect(passWord):
 @app.route('/breachChecker/<passWord>')
 def breachChecker(passWord):
    fileName = "ncscTop100k.txt"
-   breachFile = open(fileName, 'r')
+   with open(fileName) as temp_f:
+      breachFile = temp_f.readlines()
    for line in breachFile:
-      line = str(line)
-      line = line.strip()
-      if line == passWord:
+      if passWord in line:
          breachedPassword = "This password has been found in a breach, we suggest changing this password anywhere you use it.";
-      else:
-         breachedPassword = "This password was not found in a breach, however we suggest checking the strength of this password."
+   breachedPassword = "This password was not found in a breach, however we suggest checking the strength of this password."
+   #fileName = "ncscTop100k.txt"
+  # breachFile = open(fileName, 'r')
+   #for line in breachFile:
+  #    line = str(line)
+   #   line = line.strip()
+   #   if line == passWord:
+  #       breachedPassword = "This password has been found in a breach, we suggest changing this password anywhere you use it.";
+  #    else:
+  #       breachedPassword = "This password was not found in a breach, however we suggest checking the strength of this password."
    return render_template('breachChecker.html', breachedPassword = breachedPassword)
     
 @app.route('/checker', methods = ['POST', 'GET'])
