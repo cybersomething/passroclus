@@ -3,8 +3,6 @@
 #Most current working version as of 07/03/2021, 23:07
 import os
 import subprocess
-import passwordCheck
-from string import ascii_uppercase, ascii_lowercase, digits
 import json
 from flask import Flask, request, jsonify, render_template, url_for, redirect, flash
 app = Flask(__name__)
@@ -35,7 +33,7 @@ def breachCheckerRedirect(passWord):
 
 @app.route('/breachChecker/<passWord>')
 def breachChecker(passWord):
-   breachFile = open(top1000000.txt, r)
+   breachFile = open('ncscTop100k.txt', r)
    for line in breachFile:
       line = str(line)
       line - line.strip()
