@@ -66,7 +66,7 @@ def securityChecker(passWord):
             password = validate_password(password)
             if validate_password(password):
                firstMessage = ("Password meets all requirements and may be used.\n")
-               return render_template ('securityChecker.html', firstMessage = firstMessage)
+      return render_template ('securityChecker.html', firstMessage = firstMessage)
 
                
    
