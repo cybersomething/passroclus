@@ -53,23 +53,15 @@ def securityChecker(passWord):
       )
       failures = [
          msg for validator, msg in VALIDATIONS if not validator(password)]
-      if not failures:
-         return True
-      else:
+      if failures:
          firstMessage = ("Invalid password! Review below and change your password accordingly!\n")
          for msg in failures:
             msg+=str(failures)
+      else:
+         firstMessage = ("Password meets all requirements.")
+         msg = ("To make a better password check out the password creator.")
       return render_template ('securityChecker.html', firstMessage = firstMessage, msg = msg)
-           
-      if __name__ == '__main__':
-         while True:
-            password = validate_password(password)
-            if validate_password(password):
-               firstMessage = ("Password meets all requirements and may be used.\n")
-      return render_template ('securityChecker.html', firstMessage = firstMessage)
 
-               
-   
 @app.route('/breachCheckerRedirect/<passWord>', methods = ['POST', 'GET'])
 def breachCheckerRedirect(passWord):
    if request.method == 'POST':
