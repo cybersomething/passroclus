@@ -33,13 +33,12 @@ def breachCheckerRedirect(passWord):
 
 @app.route('/breachChecker/<passWord>')
 def breachChecker(passWord):
-   fileName = "ncscTop100k.txt"
-   with open(fileName) as temp_f:
-      breachFile = temp_f.readlines()
-   for line in breachFile:
-      if passWord in line:
+  result = (open('ncscTop100k.txt', 'r').read().find(passWord))
+      if result == 0:
          breachedPassword = "This password has been found in a breach, we suggest changing this password anywhere you use it.";
-   breachedPassword = "This password was not found in a breach, however we suggest checking the strength of this password."
+      elif result == -1:
+         breachedPassword = "This password was not found in a breach, however we suggest checking the strength of this password."
+ breachedPassword = "Oops something went wrong"
    #fileName = "ncscTop100k.txt"
   # breachFile = open(fileName, 'r')
    #for line in breachFile:
