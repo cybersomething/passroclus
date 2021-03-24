@@ -18,7 +18,7 @@ def securityCheckerRedirect():
       return redirect (url_for('securityChecker'))
 
 @app.route('/securityChecker/<passWord>')
-def securityChecker(password):
+def securityChecker(passWord):
    def contains(required_chars, s):
       return any(c in required_chars for c in s)
 
