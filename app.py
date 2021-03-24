@@ -33,7 +33,7 @@ def breachCheckerRedirect(passWord):
 
 @app.route('/breachChecker/<passWord>')
 def breachChecker(passWord):
-  result = (open('ncscTop100k.txt', 'r').read().find(passWord))
+   result = (open('ncscTop100k.txt', 'r').read().find(passWord))
       if result == 0:
          breachedPassword = "This password has been found in a breach, we suggest changing this password anywhere you use it.";
       elif result == -1:
