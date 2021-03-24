@@ -39,8 +39,10 @@ def breachChecker(passWord):
       for line in breachFile:
          if passWord in line:
             breachedPassword = "This password has been found in a breach, we suggest changing this password anywhere you use it.";
+            return breachedPassword
          else:
             breachedPassword = "This password was not found in a breach, however we suggest checking the strength of this password."
+            return breachedPassword
    finally:
       breachFile.close()
    return render_template('breachChecker.html', breachedPassword = breachPassword)
