@@ -3,6 +3,7 @@
 #Most current working version as of 24/03/2021
 import os
 import subprocess
+import passwordGenerator
 import json
 from flask import Flask, request, jsonify, render_template, url_for, redirect, flash
 app = Flask(__name__)
@@ -96,8 +97,9 @@ def creator():
         return redirect(url_for('creatorHome'))
       
 @app.route('/creatorHome')
-def creatorHome():
-   return render_template ('creator.html')
+def creatorHome(length):
+   passwordGenerator(length);
+   return render_template ('creator.html', word = word, contains = contains)
     
 # A welcome message to test our server
 @app.route('/')#, methods=['POST'])
