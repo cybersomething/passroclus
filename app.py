@@ -95,6 +95,15 @@ def checker():
 def creator():
    return render_template('creator.html')
 
+@app.route('/generatorHome', methods = ['POST', 'GET'])
+def checker():
+    if request.method == 'POST':
+        password = request.form['length']
+        return redirect (url_for('generator',passWord = password))
+    else:
+        password = request.args.get('length')
+        return redirect (url_for('generator',passWord = password))
+
 @app.route('/generator')
 def generator(length):
    passwordGenerator.generate(length);
