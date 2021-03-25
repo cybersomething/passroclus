@@ -1,6 +1,8 @@
 import random
 
 def generate(length):
+  
+  passwordLength = length
   symbol = 0
   lower = 0
   upper = 0
@@ -14,7 +16,7 @@ def generate(length):
 
 #randomly select ascii character classes and individual characters
 
-  while count < length:
+  while count < passwordLength:
       rand = random.randint (0,3)
       if rand == 0:
           lower += 1
