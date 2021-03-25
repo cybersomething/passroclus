@@ -95,11 +95,16 @@ def checker():
 def creator():
     if request.method == 'POST':
         return redirect(url_for('creatorHome'))
+   
+@app.route('/creator', methods = ['POST', 'GET'])
+def creator():
+    if request.method == 'POST':
+        return redirect(url_for('creatorHome'))
       
-@app.route('/creatorHome')
-def creatorHome(length):
+@app.route('/generator')
+def generator(length):
    passwordGenerator.generate(length);
-   return render_template ('creator.html', word = word, contains = contains)
+   return render_template ('generator.html', word = word, contains = contains)
     
 # A welcome message to test our server
 @app.route('/')#, methods=['POST'])
