@@ -105,8 +105,8 @@ def generatorRedirect():
         return redirect (url_for('generator', length = length))
 
 @app.route('/generator/<length>')
-def generator(length):  
-  passwordLength = length
+def generator(int(length)):  
+
   symbol = 0
   lower = 0
   upper = 0
@@ -120,7 +120,7 @@ def generator(length):
 
 #randomly select ascii character classes and individual characters
 
-  while count < passwordLength:
+  while count < length:
       rand = random.randint (0,3)
       if rand == 0:
           lower += 1
