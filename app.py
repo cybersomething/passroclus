@@ -95,14 +95,14 @@ def checker():
 def creator():
    return render_template('creator.html')
 
-@app.route('/generatorHome', methods = ['POST', 'GET'])
-def generatorHome():
+@app.route('/generatorRedirect', methods = ['POST', 'GET'])
+def generatorRedirect():
     if request.method == 'POST':
-        password = request.form['length']
-        return redirect (url_for('generator/<length>'))
+        length = request.form['length']
+        return redirect (url_for('generator', length = length))
     else:
-        password = request.args.get('length')
-        return redirect (url_for('generator/<length>'))
+        length = request.args.get('length')
+        return redirect (url_for('generator', length = length))
 
 @app.route('/generator/<length>')
 def generator(length):
