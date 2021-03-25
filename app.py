@@ -93,8 +93,7 @@ def checker():
     
 @app.route('/creator', methods = ['POST', 'GET'])
 def creator():
-    if request.method == 'POST':
-        return redirect(url_for('creatorHome'))
+   return render_template('creator.html')
 
 @app.route('/generator')
 def generator(length):
