@@ -15,14 +15,14 @@
         <h1>This is the breach checker</h1>
         <br>
       <h3>
-         Your new password is: 
-     {% block content %}
-{{word}}
-{% endblock %}
-        <br>
+
+         {% block content %}
+    Your new password is: {{word}}
+    {% endblock %}
+            <br>
         {% block content %}
-{{contains}}
-{% endblock %}
+        {{contains}}
+        {% endblock %}
       </h3>
         <br> 
         
