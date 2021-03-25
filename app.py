@@ -3,7 +3,7 @@
 #Most current working version as of 24/03/2021
 import os
 import subprocess
-import random
+import passwordGenerator
 import json
 from flask import Flask, request, jsonify, render_template, url_for, redirect, flash
 app = Flask(__name__)
