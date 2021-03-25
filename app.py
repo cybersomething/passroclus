@@ -3,7 +3,7 @@
 #Most current working version as of 24/03/2021
 import os
 import subprocess
-import passwordGenerator
+import random
 import json
 from flask import Flask, request, jsonify, render_template, url_for, redirect, flash
 app = Flask(__name__)
@@ -105,9 +105,53 @@ def generatorRedirect():
         return redirect (url_for('generator', length = length))
 
 @app.route('/generator/<length>')
-def generator(length):
-   passwordGenerator.generate(length);
-   return render_template ('generator.html', word = word, contains = contains)
+def generator(length):  
+  passwordLength = length
+  symbol = 0
+  lower = 0
+  upper = 0
+  number = 0
+  count = 0
+  password = []
+
+  
+#length = input("Please Enter Desired Password Length (default 16)\n")
+#length = 16 if length == '' else int(length)
+
+#randomly select ascii character classes and individual characters
+
+  while count < passwordLength:
+      rand = random.randint (0,3)
+      if rand == 0:
+          lower += 1
+          b = int(random.randint (97,123))
+          password.append(b)
+      elif rand == 1:
+          upper += 1
+          b = random.randint (65,91)
+          password.append(b)
+      elif rand == 2:
+          number += 1
+          b = random.randint (48,58)
+          password.append(b)
+      elif rand == 3:
+          r = random.randint(0,2)
+          symbol += 1
+          if r == 0:
+              b = random.randint (33,48)
+              password.append(b)
+          elif r == 1:
+              b = random.randint (91,97)
+              password.append(b)
+          elif r == 2:
+              b = random.randint (123,126)
+              password.append(b)
+      count += 1
+
+  #convert ascii code to characters
+  word = "".join([chr(c) for c in password])
+  contains = ("\nThis Password contains",lower,"lowercase,",upper,"uppercase,",number,"numbers and",symbol,"symbol characters")
+  return render_template ('generator.html', word = word, contains = contains)
     
 # A welcome message to test our server
 @app.route('/')#, methods=['POST'])
