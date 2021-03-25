@@ -151,7 +151,7 @@ def generator(length):
 
   #convert ascii code to characters
   word = "".join([chr(c) for c in password])
-  contains = "This Password contains" + lower + "lowercase," + upper+ "uppercase," + number + "numbers and" + symbol + "symbol characters"
+  contains = "This Password contains",lower,"lowercase,",upper,"uppercase,",number,"numbers and",symbol,"symbol characters"
   return render_template ('generator.html', word = word, contains = contains)
     
 # A welcome message to test our server
