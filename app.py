@@ -99,12 +99,12 @@ def creator():
 def generatorHome():
     if request.method == 'POST':
         password = request.form['length']
-        return redirect (url_for('generator', length = length))
+        return redirect (url_for('generator/<length>'))
     else:
         password = request.args.get('length')
-        return redirect (url_for('generator', length = length))
+        return redirect (url_for('generator/<length>'))
 
-@app.route('/generator')
+@app.route('/generator/<length>')
 def generator(length):
    passwordGenerator.generate(length);
    return render_template ('generator.html', word = word, contains = contains)
