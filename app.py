@@ -105,8 +105,9 @@ def generatorRedirect():
         return redirect (url_for('generator', length = length))
 
 @app.route('/generator/<length>')
-def generator(int(length)):  
+def generator(length):  
 
+  length = int(length)
   symbol = 0
   lower = 0
   upper = 0
