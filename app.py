@@ -96,7 +96,7 @@ def creator():
    return render_template('creator.html')
 
 @app.route('/generatorHome', methods = ['POST', 'GET'])
-def checker():
+def generatorHome():
     if request.method == 'POST':
         password = request.form['length']
         return redirect (url_for('generator',passWord = password))
