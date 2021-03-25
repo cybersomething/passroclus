@@ -7,7 +7,7 @@ number = 0
 count = 0
 password = []
 
-def passwordGenerator(length):
+def generate(length):
 
 #length = input("Please Enter Desired Password Length (default 16)\n")
 #length = 16 if length == '' else int(length)
