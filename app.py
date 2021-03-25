@@ -98,7 +98,7 @@ def creator():
       
 @app.route('/creatorHome')
 def creatorHome(length):
-   passwordGenerator(length);
+   passwordGenerator.generate(length);
    return render_template ('creator.html', word = word, contains = contains)
     
 # A welcome message to test our server
