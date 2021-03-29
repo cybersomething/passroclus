@@ -108,6 +108,7 @@ def generatorRedirect():
 def generator(length):  
    length = int(length)
    textFile = open('randomWords.txt', 'r')
+   textFile = textFile.read()
    passphrase = []
    
    while len(passphrase) < length:
