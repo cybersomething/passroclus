@@ -110,10 +110,11 @@ def generator(length):
    textFile = open('randomWords.txt', 'r')
    passphrase = []
    
-   for i in range(length):
-      temp = int(random.random()*len(textFile))
-      passphrase.append(textFile[temp])
-   
+   while len(passphrase) < length:
+      selection = random.choice(textFile)
+      if selection not in passphrase:
+         passphrase.append(selection)
+         
    return render_template ('generator.html', passphrase = passphrase)
     
 # A welcome message to test our server
