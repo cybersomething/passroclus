@@ -115,8 +115,10 @@ def generator(length):
    for i in range(length):
       temp = int(random.random()*len(words))
       passphrase.append(words[temp])
+      
+   completePassphrase = passphrase
          
-   return render_template ('generator.html', passphrase = passphrase)
+   return render_template ('generator.html', completePassphrase = passphrase)
     
 # A welcome message to test our server
 @app.route('/')#, methods=['POST'])
