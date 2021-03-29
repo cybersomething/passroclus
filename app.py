@@ -109,11 +109,12 @@ def generator(length):
    length = int(length)
    textFile = open('randomWords.txt', 'r')
    textFile = textFile.read()
+   words = list(map(str, textFile.split()))
    passphrase = []
    
    for i in range(length):
-      temp = int(random.random()*len(textFile))
-      passphrase.append(textFile[temp])
+      temp = int(random.random()*len(words))
+      passphrase.append(words[temp])
          
    return render_template ('generator.html', passphrase = passphrase)
     
