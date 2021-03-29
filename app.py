@@ -29,7 +29,7 @@ def securityChecker(passWord):
    ASCII = 30
    uniqueChar = 0
    
-   length = len(password)
+   length = len(passWord)
    for i in length:
       if (i.islower()):
          uniqueChar += lowercase;
