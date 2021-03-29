@@ -2,8 +2,7 @@ import random
 
 def generate(length):
   
-  passwordLength = length
-  symbol = 0
+ symbol = 0
   lower = 0
   upper = 0
   number = 0
@@ -11,22 +10,22 @@ def generate(length):
   password = []
 
   
-#length = input("Please Enter Desired Password Length (default 16)\n")
-#length = 16 if length == '' else int(length)
+length = input("Please Enter Desired Password Length (default 16)\n")
+length = 16 if length == '' else int(length)
 
 #randomly select ascii character classes and individual characters
 
-  while count < passwordLength:
+  while count < length:
       rand = random.randint (0,3)
       if rand == 0:
           lower += 1
           b = int(random.randint (97,123))
           password.append(b)
       elif rand == 1:
-          upper += 1
+         upper += 1
           b = random.randint (65,91)
           password.append(b)
-      elif rand == 2:
+    elif rand == 2:
           number += 1
           b = random.randint (48,58)
           password.append(b)
@@ -42,17 +41,9 @@ def generate(length):
           elif r == 2:
               b = random.randint (123,126)
               password.append(b)
-      count += 1
-
+     count += 1
+   
   #convert ascii code to characters
   word = "".join([chr(c) for c in password])
-
-  #print the result
-  #print ("Random password of length %s is: \n" % length)
-
-  #print('******')
-  return word
-  #print('******')
-  
-  contains = ("\nThis Password contains",lower,"lowercase,",upper,"uppercase,",number,"numbers and",symbol,"symbol characters")
-  return contains
+  contains = "This Password contains",lower,"lowercase,",upper,"uppercase,",number,"numbers and",symbol,"symbol characters"
+  return render_template ('generator.html', passphrase = passphrase)
