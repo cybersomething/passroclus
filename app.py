@@ -111,10 +111,9 @@ def generator(length):
    textFile = textFile.read()
    passphrase = []
    
-   while len(passphrase) < length:
-      selection = random.choice(textFile)
-      if selection not in passphrase:
-         passphrase.append(selection)
+   for i in range(length):
+      temp = int(random.random()*len(textFile))
+      passphrase.append(textFile[temp])
          
    return render_template ('generator.html', passphrase = passphrase)
     
