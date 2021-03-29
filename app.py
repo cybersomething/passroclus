@@ -33,7 +33,7 @@ def securityChecker(passWord):
    uniqueChar = 0
    
    length = len(passWord)
-   for x in range(passWord):
+   for x in length:
       for a in range(lowercase):
          if x == a:
             lowercase = 1
