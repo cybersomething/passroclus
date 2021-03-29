@@ -3,8 +3,10 @@
 #Most current working version as of 24/03/2021
 import os
 import subprocess
+import re
 import random
 import json
+import math
 from flask import Flask, request, jsonify, render_template, url_for, redirect, flash
 app = Flask(__name__)
 
@@ -20,52 +22,27 @@ def securityCheckerRedirect():
 
 @app.route('/securityChecker/<passWord>')
 def securityChecker(passWord):
-   def contains(required_chars, s):
-      return any(c in required_chars for c in s)
-
-   def contains_upper(s):
-      return contains(ascii_uppercase, s)
-
-   def contains_lower(s):
-      return contains(ascii_lowercase, s)
-
-   def contains_digit(s):
-      return contains(digits, s)
-
-   def contains_special(s):
-      return contains(r"""!@$%^&*()_-+={}[]|\,.></?~`"':;""", s)
-
-   def long_enough(s):
-      return len(s) >= 8
-
-   def check_len(input):
-      if len(input) >= 8:
-         return True
-      else:
-         return False
-
-   def validate_password(passWord):
-      VALIDATIONS = (
-      (contains_upper, 'Password needs at least one upper-case character.'),
-      (contains_lower, 'Password needs at least one lower-case character.'),
-      (contains_digit, 'Password needs at least one number.'),
-      (contains_special, 'Password needs at least one special character.'),
-      (long_enough, 'Password needs to be at least 8 characters in length.'),
-      )
-      failures = [
-         msg for validator, msg in VALIDATIONS if not validator(password)]
-      if failures:
-         firstMessage = ("Invalid password! Review below and change your password accordingly!\n")
-         for msg in failures:
-            msg+=str(failures)
-         return firstMessage
-         return msg
-      else:
-         firstMessage = ("Password meets all requirements.")
-         msg = ("To make a better password check out the password creator.")
-         return firstMessage
-         return msg
-   return render_template ('securityChecker.html', firstMessage = firstMessage, msg = msg)
+   lowercase = 26
+   uppercase = 26
+   numbers = 10
+   commonASCII = []
+   ASCII = 30
+   uniqueChar = 0
+   
+   length = len(password)
+   for i in length:
+      if (i.islower()):
+         uniqueChar += lowercase;
+      if (i.isupper()):
+         uniqueChar += uppercase;
+      if (i.isdigit()):
+         uniqueChar += numbers;
+      if (i == commonASCII):
+         uniqueChar += ASCII;            
+      
+   entropy = math.log2(uniqueChar * length)
+   
+   return render_template ('securityChecker.html', entropy)
 
 @app.route('/breachCheckerRedirect/<passWord>', methods = ['POST', 'GET'])
 def breachCheckerRedirect(passWord):
