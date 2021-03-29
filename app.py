@@ -30,19 +30,14 @@ def securityChecker(passWord):
    uniqueChar = 0
    
    length = len(passWord)
-   for i in range(length):
-      if re.search ("[a-z]", passWord)
-         uniqueChar += lowercase
-         break
-      elif re.search ("[A-Z]", passWord):
-         uniqueChar += uppercase
-         break
-      elif re.search ("[0-9]", passWord):
-         uniqueChar += numbers;
-         break
-      elif re.search ("[' ', '!', '#', '$', '%', '&', "'", '?', '@' ]"):
-         uniqueChar += ASCII;
-         break
+   if re.search ("[a-z]", passWord)
+      uniqueChar += lowercase
+   if re.search ("[A-Z]", passWord):
+      uniqueChar += uppercase
+   if re.search ("[0-9]", passWord):
+      uniqueChar += numbers;
+   if re.search ("[' ', '!', '#', '$', '%', '&', "'", '?', '@' ]"):
+      uniqueChar += ASCII;
       
    entropy = math.log2(uniqueChar * length)
    
