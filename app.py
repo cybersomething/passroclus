@@ -114,7 +114,7 @@ def generator(length):
       temp = int(random.random()*len(textFile))
       passphrase.append(textFile[temp])
    
-  return render_template ('generator.html', passphrase = passphrase)
+   return render_template ('generator.html', passphrase = passphrase)
     
 # A welcome message to test our server
 @app.route('/')#, methods=['POST'])
