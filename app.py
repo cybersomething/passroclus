@@ -50,13 +50,13 @@ def securityChecker(passWord):
    
    if (entropy <= 27):
       rating = "Your passphrase is very weak, consider using our passphrase generator to create a new one"
-   if entropy in range(28, 35):
+   elif entropy in range(28, 35):
       rating = "Your passphrase is weak, consider using our passphrase generator to create a new one"
-   if entropy in range(36, 59):
+   elif entropy in range(36, 59):
       rating = "Your passphrase is reasonable, if you've not already - check out the breach checker to make sure your password is still secure"
-   if entropy in range(60, 127):
+   elif entropy in range(60, 127):
       rating = "Your passphrase is strong! Well done, if you've not already check that your passphrase hasn't been breached and that it's still secure"
-   if entropy >= 128:
+   elif entropy >= 128:
       rating = "Your passphrase is very strong, well done! Check that it's not been breached with our breach checker!"
    
    return render_template ('securityChecker.html', entropy = entropy, rating = rating)
