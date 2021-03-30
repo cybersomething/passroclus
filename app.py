@@ -48,7 +48,7 @@ def securityChecker(passWord):
    RL = uniqueChar * length
    entropy = math.log2(RL)
    
-   return render_template ('securityChecker.html', entropy)
+   return render_template ('securityChecker.html', entropy = entropy)
 
 @app.route('/breachCheckerRedirect/<passWord>', methods = ['POST', 'GET'])
 def breachCheckerRedirect(passWord):
