@@ -35,26 +35,16 @@ def securityChecker(passWord):
       for i in passWord:
          if (i.islower()):
             lowercase += 1
+            uniqueChar = uniqueChar + 26
          if (i.isupper()):
             uppercase += 1
+            uniqueChar = uniqueChar + 26
          if (i.isdigit()):
             num += 1
+            uniqueChar = uniqueChar + 10
          if (i == symbols):
             ASCII += 1
-      
-   if lowercase == 1:
-      uniqueChar = uniqueChar + 26
-      print (uniqueChar)
-   if uppercase == 1:
-      uniqueChar = uniqueChar + 26
-      print (uniqueChar)
-   if num == 1:
-      uniqueChar = uniqueChar + 10
-      print (uniqueChar)
-   if ASCII == 1:
-      uniqueChar = uniqueChar + 30
-      print (uniqueChar)
-      
+            uniqueChar = uniqueChar + 30
    RL = uniqueChar * length
    entropy = math.log2(RL)
    
