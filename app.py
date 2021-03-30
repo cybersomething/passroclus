@@ -22,9 +22,6 @@ def securityCheckerRedirect():
 
 @app.route('/securityChecker/<passWord>')
 def securityChecker(passWord):
-  # alphabet = [ 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-   #ALPHABET = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','Y','Z']
-  # numbers = [0,1,2,3,4,5,6,7,8,9]
    symbols = [' ', '!', '#', '$', '%', '&', "'", '?', '@']
    lowercase = 0
    uppercase = 0
@@ -44,28 +41,15 @@ def securityChecker(passWord):
             num += 1
          if (i == symbols):
             ASCII += 1
-   #for x in passWord:
-     # for a in lowercase:
-      #   if x == a:
-   #         lowercase = 1
-    #  for b in uppercase:
-    #     if x == b:
-    #        uppercase = 1
-    #  for c in numbers:
-    #     if x == c:
-    #        num == 1
-     # for d in symbols:
-     #    if x == d:
-     #       ASCII = 1;
       
    if lowercase == 1:
-      uniqueChar += 26
+      uniqueChar = uniqueChar + 26
    if uppercase == 1:
-      uniqueChar += 26
+      uniqueChar = uniqueChar + 26
    if num == 1:
-      uniqueChar += 10
+      uniqueChar = uniqueChar + 10
    if ASCII == 1:
-      uniqueChar += 30
+      uniqueChar = uniqueChar + 30
       
    entropy = math.log2(uniqueChar * length)
    
