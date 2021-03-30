@@ -44,16 +44,16 @@ def securityChecker(passWord):
       
    if lowercase == 1:
       uniqueChar = uniqueChar + 26
-      print uniqueChar
+      print (uniqueChar)
    if uppercase == 1:
       uniqueChar = uniqueChar + 26
-      print uniqueChar
+      print (uniqueChar)
    if num == 1:
       uniqueChar = uniqueChar + 10
-      print uniqueChar
+      print (uniqueChar)
    if ASCII == 1:
       uniqueChar = uniqueChar + 30
-      print uniqueChar
+      print (uniqueChar)
       
    RL = uniqueChar * length
    entropy = math.log2(RL)
