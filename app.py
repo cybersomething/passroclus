@@ -48,9 +48,9 @@ def securityChecker(passWord):
             uniqueChar = uniqueChar + 30
    entropy = math.log2(uniqueChar**length)
    
-   if (entropy <= 27):
+   if (entropy <== 27):
       rating = "Your passphrase is very weak, consider using our passphrase generator to create a new one"
-   elif (entropy <= 35 && >= 28):
+   elif (entropy <== 35 && >== 28):
       rating = "Your passphrase is weak, consider using our passphrase generator to create a new one"
    elif entropy in range(36, 59):
       rating = "Your passphrase is reasonable, if you've not already - check out the breach checker to make sure your password is still secure"
