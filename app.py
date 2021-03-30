@@ -28,6 +28,7 @@ def securityChecker(passWord):
    num = 0
    ASCII = 0
    uniqueChar = 0
+   rating = ""
    
    length = len(passWord)
    
@@ -47,7 +48,17 @@ def securityChecker(passWord):
             uniqueChar = uniqueChar + 30
    entropy = math.log2(uniqueChar**length)
    
-   return render_template ('securityChecker.html', entropy = entropy)
+   if entropy < 28:
+      rating = "Your passphrase is very weak, consider using our passphrase generator to create a new one"
+   elif entropy in range(28,35):
+      rating = "Your passphrase is weak, consider using our passphrase generator to create a new one"
+   elif entropy in range(36, 59):
+      rating = "Your passphrase is reasonable, if you've not already - check out the breach checker to make sure your password is still secure"
+   elif entropy in range(60, 127):
+      rating = "Your passphrase is strong! Well done, if you've not already check that your passphrase hasn't been breached and that it's still secure"
+   elif entropy >= 128:
+      rating = "Your passphrase is very strong, well done! Check that it's not been breached with our breach checker!"
+   return render_template ('securityChecker.html', entropy = entropy, rating = rating)
 
 @app.route('/breachCheckerRedirect/<passWord>', methods = ['POST', 'GET'])
 def breachCheckerRedirect(passWord):
