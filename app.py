@@ -51,7 +51,8 @@ def securityChecker(passWord):
    if ASCII == 1:
       uniqueChar = uniqueChar + 30
       
-   entropy = math.log2(uniqueChar * length)
+   RL = uniqueChar * length
+   entropy = math.log2(RL)
    
    return render_template ('securityChecker.html', entropy)
 
