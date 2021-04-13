@@ -53,10 +53,10 @@ def securityChecker(passWord):
       rating = "Your passphrase is reasonable"
       score = "orange"
    elif (entropy <= 127):
-      rating = "Your passphrase is strong! Well done, check that your passphrase hasn't been breached and that it's still secure"
+      rating = "Your passphrase is strong!"
       score = "green"
    elif (entropy >= 128):
-      rating = "Your passphrase is very strong, well done! Check that it's not been breached!"
+      rating = "Your passphrase is very strong, well done!"
       score = "green"
       
    result = open('ncscTop100k.txt', 'r')
