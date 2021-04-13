@@ -62,10 +62,8 @@ def securityChecker(passWord):
    result = open('ncscTop100k.txt', 'r')
    if passWord in result.read():
       breachedPassword = "This password has been found in a breach, we suggest changing this password anywhere you use it.";
-      return render_template('breachChecker.html', breachedPassword = breachedPassword)
    else:
       breachedPassword = "This password was not found in a breach, however we suggest checking the strength of this password."
-      return render_template('breachChecker.html', breachedPassword = breachedPassword)
    
    return render_template ('securityChecker.html', entropy = entropy, rating = rating, breachedPassword = breachedPassword)
 
