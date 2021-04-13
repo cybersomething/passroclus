@@ -50,10 +50,10 @@ def securityChecker(passWord):
       rating = "Your passphrase is reasonable"
       score = "orange"
    elif (entropy <= 127):
-      rating = "Your passphrase is strong! Well done, check that your passphrase hasn't been breached and that it's still secure"
+      rating = "Your passphrase is strong!"
       score = "green"
    elif (entropy >= 128):
-      rating = "Your passphrase is very strong, well done! Check that it's not been breached!"
+      rating = "Your passphrase is very strong, well done!"
       score = "green"
       
    result = open('ncscTop100k.txt', 'r')
@@ -70,9 +70,9 @@ def securityChecker(passWord):
          overallScore = "#F4D35E"
       elif (breached == "false" and score == "green"):
          overallScore = "#6B8F71"
-
+   
    return render_template ('securityChecker.html', entropy = entropy, rating = rating, breachedPassword = breachedPassword, overallScore = overallScore)
-
+  
 @app.route('/checker', methods = ['POST', 'GET'])
 def checker():
     if request.method == 'POST':
@@ -111,7 +111,11 @@ def generator(length):
 @app.route('/')#, methods=['POST'])
 def index():
     return render_template('index.html')
-   
+
+@app.route('/FAQ')
+def faq():
+   return render_template('faq.html')
+
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
-   app.run(threaded=True, port = int(os.environ.get('PORT', 5000)))
+    app.run(threaded=True, port = int(os.environ.get('PORT', 5000)))
