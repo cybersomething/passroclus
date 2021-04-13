@@ -117,6 +117,10 @@ def generator(length):
 def index():
     return render_template('index.html')
    
+@app.route('/FAQ')
+def faq():
+   return render_template('faq.html')
+   
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
     app.run(threaded=True, port = int(os.environ.get('PORT', 5000)))
