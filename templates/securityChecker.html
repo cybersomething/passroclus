@@ -10,14 +10,30 @@
       body {background-color: #536271;}
       h1 {color: white;}
     </style>
-    <body>
+    <body onload="myFunction()">
+      {% block content %}
+      <script>
+      function myFunction() {
+        if ({{score}} == "bad"){
+      document.body.style.backgroundColor = "red";
+      }
+        else ({{score}} == "ok"){
+        document.body.style.backgroundColor = "orange";
+        }
+        else ({{score}} == "good"){
+        document.body.style.backgroundColor = "green";
+        }
+      }
+        
+      </script>
+      
       <div class="container-fluid" align="center">
   <h1>Passroclus</h1>
   <br>
 <h1>This is the security checker page.</h1>
      <br>
       <h2>
-        {% block content %}
+        
           The overall entropy of your entered passphrase is: {{entropy}}
           <br>
         <br>
