@@ -63,16 +63,16 @@ def securityChecker(passWord):
    if (passWord in result.read()):
       breachedPassword = "This password has been found in a breach, we suggest changing this password anywhere you use it.";
       breached = "true"
-      overallScore = "red"
+      overallScore = "eb5160"
    else:
       breachedPassword = "This password was not found in a breach."
       breached = "false"
       if (breached == "false" and score == "red"):
-         overallScore = "red"
+         overallScore = "#eb5160"
       elif (breached == "false" and score == "orange"):
-         overallScore = "orange"
+         overallScore = "#F4D35E"
       elif (breached == "false" and score == "green"):
-         overallScore = "green"
+         overallScore = "#6B8F71"
    
    return render_template ('securityChecker.html', entropy = entropy, rating = rating, breachedPassword = breachedPassword, overallScore = overallScore)
   
