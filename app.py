@@ -60,7 +60,7 @@ def securityChecker(passWord):
    if (passWord in result.read()):
       breachedPassword = "This password has been found in a breach, we suggest changing this password anywhere you use it.";
       breached = "true"
-      overallScore = "eb5160"
+      overallScore = "#eb5160"
    else:
       breachedPassword = "This password was not found in a breach."
       breached = "false"
