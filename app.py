@@ -10,11 +10,6 @@ import math
 from flask import Flask, request, jsonify, render_template, url_for, redirect, flash
 app = Flask(__name__)
 
-@app.route('/success/<passWord>')
-def success(passWord):
-   message = ('The password you entered was ' + passWord)
-   return render_template ('success.html', message = message)
-
 @app.route('/securityCheckerRedirect', methods = ['POST', 'GET'])
 def securityCheckerRedirect():
    if request.method == 'POST':
@@ -80,22 +75,7 @@ def securityChecker(passWord):
          overallScore = "green"
    
    return render_template ('securityChecker.html', entropy = entropy, rating = rating, breachedPassword = breachedPassword, overallScore = overallScore)
-
-@app.route('/breachCheckerRedirect/<passWord>', methods = ['POST', 'GET'])
-def breachCheckerRedirect(passWord):
-   if request.method == 'POST':
-      return redirect (url_for('breachChecker/<passWord>'))
-
-@app.route('/breachChecker/<passWord>')
-def breachChecker(passWord):
-   result = open('ncscTop100k.txt', 'r')
-   if passWord in result.read():
-      breachedPassword = "This password has been found in a breach, we suggest changing this password anywhere you use it.";
-      return render_template('breachChecker.html', breachedPassword = breachedPassword)
-   else:
-      breachedPassword = "This password was not found in a breach, however we suggest checking the strength of this password."
-      return render_template('breachChecker.html', breachedPassword = breachedPassword)
-    
+  
 @app.route('/checker', methods = ['POST', 'GET'])
 def checker():
     if request.method == 'POST':
