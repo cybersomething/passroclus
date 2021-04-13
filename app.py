@@ -1,5 +1,4 @@
 # app.py
-
 #Most current working version as of 24/03/2021
 import os
 import subprocess
@@ -9,12 +8,10 @@ import json
 import math
 from flask import Flask, request, jsonify, render_template, url_for, redirect, flash
 app = Flask(__name__)
-
 @app.route('/securityCheckerRedirect', methods = ['POST', 'GET'])
 def securityCheckerRedirect():
    if request.method == 'POST':
       return redirect (url_for('securityChecker'))
-
 @app.route('/securityChecker/<passWord>')
 def securityChecker(passWord):
    symbols = [' ', '!', '#', '$', '%', '&', "'", '?', '@']
@@ -53,10 +50,10 @@ def securityChecker(passWord):
       rating = "Your passphrase is reasonable"
       score = "orange"
    elif (entropy <= 127):
-      rating = "Your passphrase is strong!"
+      rating = "Your passphrase is strong! Well done, check that your passphrase hasn't been breached and that it's still secure"
       score = "green"
    elif (entropy >= 128):
-      rating = "Your passphrase is very strong, well done!"
+      rating = "Your passphrase is very strong, well done! Check that it's not been breached!"
       score = "green"
       
    result = open('ncscTop100k.txt', 'r')
@@ -73,9 +70,9 @@ def securityChecker(passWord):
          overallScore = "#F4D35E"
       elif (breached == "false" and score == "green"):
          overallScore = "#6B8F71"
-   
+
    return render_template ('securityChecker.html', entropy = entropy, rating = rating, breachedPassword = breachedPassword, overallScore = overallScore)
-  
+
 @app.route('/checker', methods = ['POST', 'GET'])
 def checker():
     if request.method == 'POST':
@@ -88,7 +85,6 @@ def checker():
 @app.route('/creator', methods = ['POST', 'GET'])
 def creator():
    return render_template('creator.html')
-
 @app.route('/generatorRedirect', methods = ['POST', 'GET'])
 def generatorRedirect():
     if request.method == 'POST':
@@ -97,7 +93,6 @@ def generatorRedirect():
     else:
         length = request.args.get('length')
         return redirect (url_for('generator', length = length))
-
 @app.route('/generator/<length>')
 def generator(length):  
    length = int(length)
@@ -117,10 +112,6 @@ def generator(length):
 def index():
     return render_template('index.html')
    
-@app.route('/FAQ')
-def faq():
-   return render_template('faq.html')
-   
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
-    app.run(threaded=True, port = int(os.environ.get('PORT', 5000)))
+app.run(threaded=True, port = int(os.environ.get('PORT', 5000)))
