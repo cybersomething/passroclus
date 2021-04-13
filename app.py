@@ -65,11 +65,11 @@ def securityChecker(passWord):
       score = "green"
       
    result = open('ncscTop100k.txt', 'r')
-   if passWord in result.read():
+   if (passWord in result.read()):
       breachedPassword = "This password has been found in a breach, we suggest changing this password anywhere you use it.";
       breachedScore = "red"
-   else:
-      breachedPassword = "This password was not found in a breach, however we suggest checking the strength of this password."
+   else if(passWord not in result.read()):
+      breachedPassword = "This password was not found in a breach."
       breachedScore = "green"
    
    if (breachedScore == "red" and score == "red" or score == "orange" or score == "green"):
