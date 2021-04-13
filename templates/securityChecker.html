@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <style>
       body {background-color: {{overallScore}}}
-      h1 {color: white;}
+      h1, h2, h3 {color: white;}
     </style>
     <body>
       {% block content %}  
@@ -28,8 +28,10 @@
           <br>
         {% endblock %}
       </h2>
-     <p>Entropy is the measurement of how predictable your password is. The higher the entropy, the harder it is to crack.</p>
-     <p>It should be noted, that some passphrases may have high entropy but if they've been breached in the past they are likely to be insecure.</p>  
+        <br>
+     <h3>Entropy is the measurement of how predictable your password is. The higher the entropy, the harder it is to crack.</h3>
+     <h3>It should be noted, that some passphrases may have high entropy but if they've been breached in the past they are likely to be insecure.</h3>
+        <h3>To find out more about entropy and how we calculated it, click here!</h3>
 </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </body>
