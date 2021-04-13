@@ -10,13 +10,14 @@
       body {background-color: #536271;}
       h1 {color: white;}
     </style>
-    <body onload="myFunction()">
+    <body onload="changeBodyBg()">
       {% block content %}
       <script>
-      function myFunction() {
-    document.body.style.backgroundColor = "red";
-      }
-        
+        function changeBodyBg(){
+        if ({{score}} == "bad"){
+         document.body.style.background = red;
+        }
+        }
       </script>
       
       <div class="container-fluid" align="center">
