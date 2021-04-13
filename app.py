@@ -67,18 +67,18 @@ def securityChecker(passWord):
    result = open('ncscTop100k.txt', 'r')
    if (passWord in result.read()):
       breachedPassword = "This password has been found in a breach, we suggest changing this password anywhere you use it.";
-      breachedScore = "red"
-   else if(passWord not in result.read()):
+      breached = "true"
+   else:
       breachedPassword = "This password was not found in a breach."
-      breachedScore = "green"
+      breached = "false"
    
-   if (breachedScore == "red" and score == "red" or score == "orange" or score == "green"):
+   if (breached == "true" and score == "red" or score == "orange" or score == "green"):
       overallScore = "red"
-   elif (breachedScore == "green" and score == "red"):
+   elif (breached == "false" and score == "red"):
       overallScore = "red"
-   elif (breachedScore == "green" and score == "orange"):
+   elif (breached == "false" and score == "orange"):
       overallScore = "orange"
-   elif (breachedScore == "green" and score == "green"):
+   elif (breached == "false" and score == "green"):
       overallScore = "green"
    
    return render_template ('securityChecker.html', entropy = entropy, rating = rating, breachedPassword = breachedPassword, overallScore = overallScore)
