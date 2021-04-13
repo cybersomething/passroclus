@@ -67,7 +67,7 @@ def securityChecker(passWord):
       if (breached == "false" and score == "red"):
          overallScore = "#eb5160"
       elif (breached == "false" and score == "orange"):
-         overallScore = "#F4D35E"
+         overallScore = "#DDB967"
       elif (breached == "false" and score == "green"):
          overallScore = "#6B8F71"
    
