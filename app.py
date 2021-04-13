@@ -72,7 +72,16 @@ def securityChecker(passWord):
       breachedPassword = "This password was not found in a breach, however we suggest checking the strength of this password."
       breachedScore = "green"
    
-   return render_template ('securityChecker.html', entropy = entropy, rating = rating, breachedPassword = breachedPassword, score = score, breachedScore = breachedScore)
+   if (breachedScore == "red" and score == "red" or score == "orange" or score == "green"):
+      overallScore = "red"
+   elif (breachedScore == "green" and score == "red"):
+      overallScore = "red"
+   elif (breachedScore == "green" and score == "orange"):
+      overallScore = "orange"
+   elif (breachedScore == "green" and score == "green"):
+      overallScore = "green"
+   
+   return render_template ('securityChecker.html', entropy = entropy, rating = rating, breachedPassword = breachedPassword, overallScore = overallScore)
 
 @app.route('/breachCheckerRedirect/<passWord>', methods = ['POST', 'GET'])
 def breachCheckerRedirect(passWord):
