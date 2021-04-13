@@ -58,8 +58,16 @@ def securityChecker(passWord):
       rating = "Your passphrase is strong! Well done, if you've not already check that your passphrase hasn't been breached and that it's still secure"
    elif (entropy >= 128):
       rating = "Your passphrase is very strong, well done! Check that it's not been breached with our breach checker!"
+      
+   result = open('ncscTop100k.txt', 'r')
+   if passWord in result.read():
+      breachedPassword = "This password has been found in a breach, we suggest changing this password anywhere you use it.";
+      return render_template('breachChecker.html', breachedPassword = breachedPassword)
+   else:
+      breachedPassword = "This password was not found in a breach, however we suggest checking the strength of this password."
+      return render_template('breachChecker.html', breachedPassword = breachedPassword)
    
-   return render_template ('securityChecker.html', entropy = entropy, rating = rating)
+   return render_template ('securityChecker.html', entropy = entropy, rating = rating, breachedPassword = breachedPassword)
 
 @app.route('/breachCheckerRedirect/<passWord>', methods = ['POST', 'GET'])
 def breachCheckerRedirect(passWord):
